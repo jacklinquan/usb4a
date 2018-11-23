@@ -77,7 +77,7 @@ android.p4a_whitelist = lib-dynload/termios.so
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = usb4a
+requirements = kivy, pyjnius, usb4a
 
 # (str) XML file to include as an intent filters in <activity> tag
 android.manifest.intent_filters = intent-filter.xml 
