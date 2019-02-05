@@ -1,5 +1,9 @@
 # usb4a
+[![PyPI version](https://badge.fury.io/py/usb4a.svg)](https://badge.fury.io/py/usb4a) [![Downloads](https://pepy.tech/badge/usb4a)](https://pepy.tech/project/usb4a)
+
 Python package for Android USB host.
+
+Please consider [![Paypal Donate](https://github.com/jacklinquan/images/blob/master/paypal_donate_button_200x80.png)](https://www.paypal.me/jacklinquan) to support me.
 
 **Android platform related classes:**
 
