@@ -3,6 +3,8 @@
 
 Python package for Android USB host.
 
+Please try the Android App built with usb4a on Google Play: [PyTool USB Serial Free](https://play.google.com/store/apps/details?id=com.quanlin.pytoolusbserialfree).
+
 Please consider [![Paypal Donate](https://github.com/jacklinquan/images/blob/master/paypal_donate_button_200x80.png)](https://www.paypal.me/jacklinquan) to support me.
 
 **Android platform related classes:**
@@ -53,7 +55,7 @@ It works for Android 6.0+.
 
 Get Pydroid apps from [here](https://github.com/jacklinquan/Pydroid_Apks).
 
-Or get the latest versions from [Google Play](https://play.google.com/store/apps).
+Or get the latest versions on [Google Play](https://play.google.com/store/apps).
 
 In Pydroid, go to Menu->Pip.
 
