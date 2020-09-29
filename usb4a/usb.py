@@ -48,11 +48,12 @@ class USBError(IOError):
 
 def get_context():
     '''Get the mActivity or mService context depending on what is available'''
+    context = None
     if PythonActivity.mActivity:
         context = PythonActivity.mActivity
     elif PythonService.mService:
         context = PythonService.mService
-    else:
+    if not context:
         raise RuntimeError("Could not resolve context")
     return context
 
