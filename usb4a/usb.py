@@ -27,6 +27,7 @@ arraycopy
 from jnius import autoclass
 
 PythonActivity = autoclass('org.kivy.android.PythonActivity')
+PythonService = autoclass('org.kivy.android.PythonService')
 Context = autoclass('android.content.Context')
 Intent = autoclass('android.content.Intent')
 PendingIntent = autoclass('android.app.PendingIntent')
@@ -45,14 +46,24 @@ USB_RECIPIENT_OTHER = 0x03
 class USBError(IOError):
     '''USB Error class'''
 
+def get_context():
+    '''Get the mActivity or mService context depending on what is available'''
+    context = None
+    if PythonActivity.mActivity:
+        context = PythonActivity.mActivity
+    elif PythonService.mService:
+        context = PythonService.mService
+    if not context:
+        raise RuntimeError("Could not resolve context")
+    return context
+
 def get_usb_manager():
     '''Get USB manager object from the system.
     
     Returns:
         usb_manager: an object representing USB manager from the system.  
     '''
-    activity = PythonActivity.mActivity
-    usb_manager = activity.getSystemService('usb')
+    usb_manager = get_context().getSystemService('usb')
     return usb_manager
 
 def get_usb_device_list():
@@ -106,11 +117,10 @@ def request_usb_permission(usb_device):
     Parameters:
         usb_device (object): the USB device object. 
     '''
-    activity = PythonActivity.mActivity
     usb_manager = get_usb_manager()
     ACTION_USB_PERMISSION = "com.access.device.USB_PERMISSION"
     intent = Intent(ACTION_USB_PERMISSION)
-    pintent = PendingIntent.getBroadcast(activity, 0, intent, 0)
+    pintent = PendingIntent.getBroadcast(get_context(), 0, intent, 0)
     usb_manager.requestPermission(usb_device, pintent)
     
 def build_usb_control_request_type(direction, usb_type, recipient):
@@ -137,5 +147,3 @@ def arraycopy(source, sourcepos, dest, destpos, numelem):
         numelem (int): the data length to copy.
     '''
     dest[destpos:destpos+numelem] = source[sourcepos:sourcepos+numelem]    
-    
-    
