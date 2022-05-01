@@ -69,6 +69,8 @@ Scroll to the last line, it should list all the USB devices connected to the And
 
 **If a dedicated app is needed to be built with buildozer:**
 
+(These instructions are outdated and need update.)
+
 It works for Android 4.0+.
 
 In buildozer.spec add termios.so to the whitelist.
