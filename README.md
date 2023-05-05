@@ -69,15 +69,17 @@ Scroll to the last line, it should list all the USB devices connected to the And
 
 **If a dedicated app is needed to be built with buildozer:**
 
-(These instructions are outdated and need update.)
-
 It works for Android 4.0+.
+
+Grab the contents of the `xml/` folder within this repo. Put them into a similar folder within your project.
+The files work as they are. It is recommended to run the app first without modifying them. They can later
+be modified as deemed suitable.
+
+**Modify the buildozer.spec:**
 
 In buildozer.spec add termios.so to the whitelist.
 
 Include usb4a in requirements.
-
-Add intent-filter.xml.
 
 ```
 # (list) python-for-android whitelist
@@ -87,26 +89,15 @@ android.p4a_whitelist = lib-dynload/termios.so
 # comma seperated e.g. requirements = sqlite3,kivy
 requirements = kivy, pyjnius, usb4a
 
+# (str) Extra xml to write directly inside the <manifest> element of AndroidManifest.xml
+# use that parameter to provide a filename from where to load your custom XML code
+android.extra_manifest_xml = manifest/extra_manifest.xml
+
 # (str) XML file to include as an intent filters in <activity> tag
-android.manifest.intent_filters = intent-filter.xml 
+android.manifest.intent_filters = manifest/intent-filter.xml
+
+# (list) Copy these files to src/main/res/xml/ (used for example with intent-filters)
+android.res_xml = manifest/device_filter.xml
 ```
 
-Build the project for the first time and it will fail with an error as expected.
-
-`buildozer android debug`
-
-In the generated  `.buildozer` folder find a `res` folder like this one:
-
-`.buildozer/android/platform/build/dists/YOU_PROJECT_NAME/src/main/res`
-
-Create a `xml` folder in `res` folder.
-
-Add device_filter.xml to this `res/xml/` folder.
-
-Find a manifest template file like this one:
-
-`.buildozer/android/platform/build/dists/YOUR_PROJECT_NAME/templates/AndroidManifest.tmpl.xml`
-
-Add  `<uses-feature android:name="android.hardware.usb.host" />`  to this AndroidManifest.tmpl.xml at a good position.
-
-Build the project again and it should pass.
+Thats it, build the app and deploy it, everything should work now
