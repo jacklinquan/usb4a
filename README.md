@@ -1,11 +1,16 @@
 # usb4a
-[![PyPI version](https://badge.fury.io/py/usb4a.svg)](https://badge.fury.io/py/usb4a) [![Downloads](https://pepy.tech/badge/usb4a)](https://pepy.tech/project/usb4a)
+[![PayPal Donate][paypal_img]][paypal_link]
+[![PyPI version][pypi_img]][pypi_link]
+[![Downloads][downloads_img]][downloads_link]
+
+  [paypal_img]: https://github.com/jacklinquan/images/blob/master/paypal_donate_badge.svg
+  [paypal_link]: https://www.paypal.me/jacklinquan
+  [pypi_img]: https://badge.fury.io/py/usb4a.svg
+  [pypi_link]: https://badge.fury.io/py/usb4a
+  [downloads_img]: https://pepy.tech/badge/usb4a
+  [downloads_link]: https://pepy.tech/project/usb4a
 
 Python package for Android USB host.
-
-Please try the Android App built with usb4a on Google Play: [PyTool USB Serial Free](https://play.google.com/store/apps/details?id=com.quanlin.pytoolusbserialfree).
-
-Please consider [![Paypal Donate](https://github.com/jacklinquan/images/blob/master/paypal_donate_button_200x80.png)](https://www.paypal.me/jacklinquan) to support me.
 
 **Android platform related classes:**
 
@@ -100,4 +105,19 @@ android.manifest.intent_filters = manifest/intent-filter.xml
 android.res_xml = manifest/device_filter.xml
 ```
 
-Thats it, build the app and deploy it, everything should work now
+That's it, build the app and deploy it, everything should work now.
+
+## Change log
+### Version 0.3.0
+Since Android API Version >= 31 (Android 12),
+it requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
+Some code is modified to meet this requirement.
+Thank [vgrimaldi848](https://github.com/vgrimaldi848) for reporting the issue and suggesting the solution.
+Thank [troscianko](https://github.com/troscianko) for testing the code with Android 12 devices.
+
+### Version 0.2.0
+Service context is added so that the app can run in background.
+Thank [rambo](https://github.com/rambo) for adding service context support to the package.
+
+### Version 0.1.0
+Initial release.

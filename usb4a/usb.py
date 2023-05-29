@@ -120,7 +120,12 @@ def request_usb_permission(usb_device):
     usb_manager = get_usb_manager()
     ACTION_USB_PERMISSION = "com.access.device.USB_PERMISSION"
     intent = Intent(ACTION_USB_PERMISSION)
-    pintent = PendingIntent.getBroadcast(get_context(), 0, intent, 0)
+    try:
+        pintent = PendingIntent.getBroadcast(get_context(), 0, intent, 0)
+    except Exception:
+        pintent = PendingIntent.getBroadcast(
+            get_context(), 0, intent, PendingIntent.FLAG_IMMUTABLE
+        )
     usb_manager.requestPermission(usb_device, pintent)
     
 def build_usb_control_request_type(direction, usb_type, recipient):

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="usb4a",
-    version="0.2.0",
+    version="0.3.0",
     description="Python package for Android USB host.",
     long_description="https://github.com/jacklinquan/usb4a",
     long_description_content_type="text/markdown",
